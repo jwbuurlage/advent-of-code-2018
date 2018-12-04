@@ -58,19 +58,13 @@ fn main() {
     }
 
     for patch in patches.clone() {
-        for x in patch.min.0..patch.max.0 {
-            for y in patch.min.1..patch.max.1 {
-                grid[x][y] -= 1;
-            }
-        }
-
         let mut all_zero = true;
         for x in patch.min.0..patch.max.0 {
             for y in patch.min.1..patch.max.1 {
-                if grid[x][y] > 0 {
+                if grid[x][y] > 1 {
                     all_zero = false;
+                    break;
                 }
-                grid[x][y] += 1;
             }
         }
 
