@@ -46,6 +46,8 @@ fn main() {
     let str_file = String::from_utf8(file).expect("could not parse as utf8");
     let mut patches = rects(&str_file[..]).expect("could not parse rects").1;
 
+    let a : Vec<i32> = vec![1,2,3];
+
     let mut grid = vec![vec![0; 1000]; 1000];
     for patch in patches.clone() {
         for x in patch.min.0..patch.max.0 {
