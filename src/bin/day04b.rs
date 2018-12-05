@@ -190,18 +190,17 @@ fn main() {
         }
     }
 
-    let mut totals: Vec<(usize, usize)> = schedule
+    let mut totals: Vec<(usize, (usize, &usize))> = schedule
         .iter()
-        .map(|guard| -> (usize, usize) { (*guard.0, guard.1.iter().sum()) })
+        .map(|guard| -> (usize, (usize, &usize)) {
+            (
+                *guard.0,
+                guard.1.iter().enumerate().max_by_key(|&(_, b)| b).unwrap(),
+            )
+        })
         .collect();
-    totals.sort_by(|(_, x), (_, y)| x.cmp(y));
+    totals.sort_by(|(_, (_, x)), (_, (_, y))| x.cmp(y));
     println!("{:?}", totals);
 
-    let max_id = totals[totals.len() - 1].0;
-    println!("max_id: {}", max_id);
-    if let Some(x) = schedule.get(&max_id) {
-        let m = x.iter().enumerate().max_by_key(|&(_, b)| b).unwrap();
-        println!("best_minute: {:?}", m);
-        println!("checksum {}", max_id * m.0);
-    }
+    println!("{:?}", totals[totals.len() - 1].0 * (totals[totals.len() - 1].1).0);
 }
