@@ -40,7 +40,7 @@ fn main() {
 
     let large = w * h * 2 as i32;
     let mut visited = vec![
-        vec![vec![large + 1; xs.len()]; (h + 1) as usize];
+        vec![vec![false; xs.len()]; (h + 1) as usize];
         (w + 1) as usize
     ];
 
@@ -55,17 +55,12 @@ fn main() {
 
     let mut cur_d = large;
     while let Some(State { d, x: (x, y), i }) = q.pop() {
-        if d < cur_d {
-            println!("{}, {}", large - d, q.len());
-            cur_d = d;
-        }
-
         grid[x as usize][y as usize] += large - d;
 
         for &(a, b) in &[(x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)] {
             if a >= 0 && a <= w && b >= 0 && b <= h {
-                if visited[a as usize][b as usize][i as usize] == large + 1 {
-                    visited[a as usize][b as usize][i as usize] = d;
+                if !visited[a as usize][b as usize][i as usize] {
+                    visited[a as usize][b as usize][i as usize] = true;
                     q.push(State {
                         d: d - 1,
                         x: (a, b),
