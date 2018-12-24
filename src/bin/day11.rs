@@ -44,5 +44,4 @@ fn main() {
     }
 
     println!("{}, {} -> {}", best_x - 1, best_y - 1, max);
-
 }

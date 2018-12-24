@@ -2,10 +2,10 @@ use std::io::{self, Read};
 use std::str::FromStr;
 
 fn main() {
-    // TODO add `gen` falses to the left
     let gen = 20;
 
     let strinput = "#...#####.#..##...##...#.##.#.##.###..##.##.#.#..#...###..####.#.....#..##..#.##......#####..####...";
+
     let mut strinput_bool: Vec<bool> = strinput
         .chars()
         .map(|x| match x {

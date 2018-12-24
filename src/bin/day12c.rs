@@ -48,7 +48,6 @@ fn main() {
         ".#..#" => '.',
     };
 
-
     let step = |state: &mut Vec<char>| {
         let state_copy = state.clone();
         for i in 2..(state.len()-2) {
