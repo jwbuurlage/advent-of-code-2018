@@ -118,7 +118,6 @@ fn main() {
         if (acc >= 3) {
             total += 1;
         }
-        println!("{}", acc);
     }
 
     println!("total: {}", total);
@@ -131,7 +130,6 @@ fn main() {
                 for j in 0..16 {
                     if cs[i][j] {
                         change = true;
-                        println!("{} must be {}", i, j);
                         convert[j] = i;
                         for k in 0..16 {
                             cs[k][j] = false;
@@ -143,9 +141,6 @@ fn main() {
         if !change { break; }
     }
 
-    println!("cs: {:?}", cs);
-
-    println!("convert: {:?}", convert);
 
     let mut reg = [0, 0, 0, 0];
     while let Some(xs) = ls.next() {
@@ -160,5 +155,5 @@ fn main() {
         reg = op(convert[c[0]], reg, c);
     }
 
-    println!("{:?}", reg);
+    println!("registers: {:?}", reg);
 }
