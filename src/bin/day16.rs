@@ -68,7 +68,6 @@ fn main() {
     io::stdin().read_to_string(&mut input);
 
     let mut ls = input.lines();
-
     let mut cs = vec![vec![true; 16]; 16];
 
     let mut total = 0;
