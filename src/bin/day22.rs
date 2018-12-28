@@ -37,7 +37,7 @@ fn main() {
 
     // do a DIJKSTRA
     let mut visited = vec![vec![vec![false; w]; h]; 3];
-    let large = 100000000;
+    let large = 100000000000;
     let mut q = BinaryHeap::new();
     q.push((large, (0, 0), 0));
 
